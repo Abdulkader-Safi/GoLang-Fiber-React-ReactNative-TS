@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3030/api/",
+  // add your IP then port:3030
+  baseURL: "http://192.168.74.1:3030/api",
   withCredentials: true,
 });
 

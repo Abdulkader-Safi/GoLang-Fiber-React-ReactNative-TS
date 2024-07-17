@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Text } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 
 import { User } from "@/utils/types/UserType";
 import api from "@/utils/api";
@@ -50,8 +50,21 @@ const index = () => {
   }
 
   return (
-    <SafeAreaView>
-      <Text>Home</Text>
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      >
+        <ActivityIndicator size={30} color={"black"} />
+      </View>
     </SafeAreaView>
   );
 };
