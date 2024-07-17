@@ -7,15 +7,33 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { useState } from "react";
+import api from "@/utils/api";
 
 const registerPage = () => {
+  const [redirect, setRedirect] = useState<boolean>(false);
   const [registerName, setRegisterName] = useState<string>("");
   const [registerEmail, setRegisterEmail] = useState<string>("");
   const [registerPass, setRegisterPass] = useState<string>("");
 
-  const HandleRegister = () => {};
+  const HandleRegister = async () => {
+    const response = await api.post("/register", {
+      name: registerName,
+      email: registerEmail,
+      password: registerPass,
+    });
+
+    if (response.status === 200) {
+      setRedirect(true);
+    } else {
+      alert("Something went wrong, please try again later");
+    }
+  };
+
+  if (redirect) {
+    return <Redirect href={"/"} />;
+  }
 
   return (
     <SafeAreaView

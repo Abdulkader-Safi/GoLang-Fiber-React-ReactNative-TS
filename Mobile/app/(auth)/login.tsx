@@ -7,15 +7,12 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useHeaderHeight } from "@react-navigation/elements";
 import { Link, Redirect } from "expo-router";
 import { useState } from "react";
 
 import api from "@/utils/api";
 
 const loginPage = () => {
-  const headerHeigh = useHeaderHeight();
-
   const [redirect, setRedirect] = useState<boolean>(false);
 
   const [loginEmail, setLoginEmail] = useState<string>("");
@@ -41,7 +38,6 @@ const loginPage = () => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: headerHeigh,
         flex: 1,
       }}
     >
